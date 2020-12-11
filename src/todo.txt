@@ -1,0 +1,4 @@
+TODO: Make Login Functional
+TODO: Create global state
+TODO: Make homepage change based on if the user is logged in or not
+TODO: Make signup page
