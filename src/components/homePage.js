@@ -3,10 +3,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import runningGirl from "./pictures/runningGirl.jpg";
-// import Girl from './pictures/girl.jpg';
-import guyWorkingOut from "./pictures/guyworkout.jpg";
-import "./homepage.css";
+import runningGirl from "../pictures/runningGirl.jpg";
+// import Girl from '../pictures/girl.jpg';
+import guyWorkingOut from "../pictures/guyworkout.jpg";
+import "../styles/homepage.css";
 import { Link } from "react-router-dom";
 
 export default class HomePage extends Component {

@@ -1,12 +1,12 @@
-import Mainnav from "./header.js";
+import Mainnav from "./components/header.js";
 
 // import HomePage from "./homePage";
 import { BrowserRouter } from "react-router-dom";
 import { Switch, Route} from "react-router-dom";
 // import SavedWorkouts from "./savedWorkouts.js";
 
-import "./style.css";
-import LoginPage from "./loginPage.js";
+import "./styles/style.css";
+import LoginPage from "./components/loginPage.js";
 function App() {
   return (
     <div className="App blueBackground">

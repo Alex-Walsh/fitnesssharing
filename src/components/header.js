@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "../styles/style.css";
 
 export default class Mainnav extends Component {
   render() {

@@ -1,9 +1,7 @@
-
-
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./Login.css";
+import "../styles/Login.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
