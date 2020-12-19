@@ -1,18 +1,36 @@
 import firebase from "firebase/app";
+
 import "firebase/auth";
 import "firebase/firestore";
+import dotenv from 'dotenv'
+dotenv.config()
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDUH2KjUc2567ThVmC_JOjBgp-v68ahHMI",
+firebase.initializeApp({
+  apiKey: "AIzaSyDUH2KjUc2567ThVmC_JOjBgp-v68ahHMI",
     authDomain: "fitness-app-db0b5.firebaseapp.com",
     projectId: "fitness-app-db0b5",
     storageBucket: "fitness-app-db0b5.appspot.com",
     messagingSenderId: "409833075822",
     appId: "1:409833075822:web:3b6adb0d37b8430567627f",
     measurementId: "G-5V565Q1B77"
-  };
 
+});
 
-firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+const googleProvider = new firebase.auth.GoogleAuthProvider()
+export const signInWithGoogle = () => {
+  auth.signInWithPopup(googleProvider).then((res) => {
+    // user object
+    console.log(res.user)
+  }).catch((error) => {
+    console.log(error.message)
+  })
+}
+export const logOut = () => {
+  auth.signOut().then(()=> {
+    console.log('logged out')
+  }).catch((error) => {
+    console.log(error.message)
+  })
+}
+
