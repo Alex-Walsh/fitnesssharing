@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import axios from 'axios';
+import Ctx from './ctxtest';
 
-export default class SavedWorkouts extends React.Component {
+export default class SavedWorkouts extends Component {
     state = {
       workouts: []
     }
@@ -20,15 +21,18 @@ export default class SavedWorkouts extends React.Component {
           this.setState({ workouts: result.workouts });
         })
     }
+
+    
   
     render() {
       return (
+        <div>
         <ul>
-          { this.state.workouts.map(workout => <li>{workout}</li>)}
+          { this.state.workouts.map(workout => <li key={workout}>{workout}</li>)}
         </ul>
-        // <div>
-        //     <h1>Hello</h1>
-        // </div>
+        
+        <Ctx />
+        </div>
       )
     }
   }

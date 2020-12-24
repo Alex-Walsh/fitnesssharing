@@ -1,8 +1,9 @@
 import firebase from "firebase/app";
-
+import { useContext } from 'react';
 import "firebase/auth";
 import "firebase/firestore";
 import dotenv from 'dotenv'
+import { UsrCntxt } from '../contextThings';
 dotenv.config()
 
 firebase.initializeApp({
@@ -22,6 +23,10 @@ export const signInWithGoogle = () => {
   auth.signInWithPopup(googleProvider).then((res) => {
     // user object
     console.log(res.user)
+    return res.user;
+    
+    //context user = res.user
+
   }).catch((error) => {
     console.log(error.message)
   })

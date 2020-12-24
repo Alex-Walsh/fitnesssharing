@@ -17,7 +17,7 @@ export default class HomePage extends Component {
           {/* <Link to="/savedWorkouts"> */}
 
           <Col xs={12} sm={4} lg={4}>
-            <Link to="/main" className="routerLink">
+            <Link to="/savedWorkouts" className="routerLink">
               <Card className="bg-dark text-black">
                 <Card.Img src={runningGirl} alt="Card image" />
                 <Card.ImgOverlay>
