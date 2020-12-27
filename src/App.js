@@ -12,6 +12,8 @@ import SavedWorkouts from "./components/savedWorkouts.js";
 // import ProfilePage from "./scripts/profilePage.js";
 import { UsrCntxt } from "./contextThings.js";
 import { useState } from "react";
+import Workouts from "./components/savedworkoutstemp.js";
+
 function App() {
   const [value, setvalue] = useState(null);
   return (
@@ -39,7 +41,8 @@ function App() {
             <LoginPage />
           </Route>
           <Route path="/savedWorkouts">
-            <SavedWorkouts />
+            {/* <SavedWorkouts />  */}
+            <Workouts />
 
           </Route>
           
