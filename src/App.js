@@ -14,7 +14,7 @@ import { UsrCntxt } from "./contextThings.js";
 import { useState } from "react";
 import Workouts from "./components/savedworkoutstemp.js";
 import Workout from "./workout.js";
-
+//TODO: ADD SIGNOUT, CLEAR ALL LOCALSTORAGE VALUES WHEN DOING SO
 function App() {
   const [value, setvalue] = useState(null);
   return (

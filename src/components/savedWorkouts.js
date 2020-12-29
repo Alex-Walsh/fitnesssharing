@@ -16,8 +16,6 @@ export default class SavedWorkouts extends Component {
       })
         .then(res => {
           const result = res.data;
-          console.log(result);
-          console.log(result.workouts);
           this.setState({ workouts: result.workouts });
         })
     }

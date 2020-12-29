@@ -1,12 +1,13 @@
-import React, {useContext, useState } from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/Login.css";
 import { signInWithGoogle } from '../firebase/firebase';
 import { UsrCntxt } from '../contextThings';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import { auth } from '../firebase/firebase.js';
-
+import firebase from "firebase/app";
+import axios from "axios";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -24,11 +25,40 @@ export default function LoginPage() {
 
   const signIn = () => {
     //take 2 params 
-    auth.signInWithEmailAndPassword(email, password)
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(auth.signInWithEmailAndPassword(email, password)
     .then((res) => {
       setvalue(res.user.uid);
-    }) 
+      localStorage.setItem('authUser', res.user.uid);
+      console.log(localStorage.getItem('authUser'));
+    }) ); 
+
   }
+
+  function getToken(uid) {
+    //TODO: ERROR HANDLE
+    axios.get("http://localhost:5000/fitness-app-db0b5/us-central1/api/getToken", {
+      params: {
+        uid: "8bdIe4HOfoSCEG6j7osKFgcttI02"
+    }}).then((res) => {
+      localStorage.setItem('authToken', res.data.token);
+      return res.data.token;
+    });
+  }
+//USER PERSISTENCE
+  useEffect(() => {
+    let possibleUser = localStorage.getItem('authUser');
+//TODO: DOES NOT WORK, IS FINNICKY
+    if(typeof possibleUser != undefined && typeof possibleUser != null) {
+      //TODO: ERROR HANDLE
+      getToken(localStorage.getItem('authUser'));
+      auth.signInWithCustomToken(localStorage.getItem('authToken'))
+      .then((res) => {
+        console.log(res);
+        setvalue(res.user.uid);
+      })
+    }
+  }, []);
 
   return (
     <div className="Login">
