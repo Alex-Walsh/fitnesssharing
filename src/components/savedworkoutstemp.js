@@ -3,6 +3,7 @@ import { UsrCntxt } from "../contextThings";
 import axios from "axios";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "../styles/style.css";
+import { Link } from "react-router-dom";
 
 export default function Workouts() {
   const { value, setvalue } = useContext(UsrCntxt);
@@ -40,19 +41,31 @@ export default function Workouts() {
         {/* <button onClick={getWorkouts}>HERE</button> */}
         {workouts.map((Workout, index) => {
           return (
-              <Col lg={4} className="cardSpacing">
-            <Card key={index} lg={4}>
+            
+              <Col lg={4} className="cardSpacing" key={index}>
+                <Link to={{pathname: "/workout", data: {
+              workoutid: Workout.docid
+            }}}>
+            <Card  lg={4}>
               <Card.Body>
                 <Card.Title>{Workout.workoutname}</Card.Title>
                 <Card.Text>Created By: {Workout.createdby}</Card.Text>
               </Card.Body>
             </Card>
+            </Link>
             </Col>
+            
           );
         })}
 
         </Row>
       </Container>
+      <Link to={{
+        pathname:'/workout',
+        about: {
+          name: 'ur mom'
+        }
+      }}>WORKOUT</Link>
     </div>
   );
 }

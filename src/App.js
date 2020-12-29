@@ -13,6 +13,7 @@ import SavedWorkouts from "./components/savedWorkouts.js";
 import { UsrCntxt } from "./contextThings.js";
 import { useState } from "react";
 import Workouts from "./components/savedworkoutstemp.js";
+import Workout from "./workout.js";
 
 function App() {
   const [value, setvalue] = useState(null);
@@ -44,6 +45,9 @@ function App() {
             {/* <SavedWorkouts />  */}
             <Workouts />
 
+          </Route>
+          <Route path="/workout">
+            <Workout />
           </Route>
           
         </Switch>

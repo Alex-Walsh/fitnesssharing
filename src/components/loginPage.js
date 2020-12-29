@@ -26,7 +26,6 @@ export default function LoginPage() {
     //take 2 params 
     auth.signInWithEmailAndPassword(email, password)
     .then((res) => {
-      console.log(res.user);
       setvalue(res.user.uid);
     }) 
   }
