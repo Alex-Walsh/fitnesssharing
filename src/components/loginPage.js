@@ -37,14 +37,19 @@ export default function LoginPage() {
 
   function getToken(uid) {
     //TODO: ERROR HANDLE
+    console.log(uid);
     axios.get("http://localhost:5000/fitness-app-db0b5/us-central1/api/getToken", {
       params: {
-        uid: "8bdIe4HOfoSCEG6j7osKFgcttI02"
+        uid: uid
     }}).then((res) => {
+      console.log('authToken: ', res.data.token);
       localStorage.setItem('authToken', res.data.token);
       return res.data.token;
     });
   }
+
+    
+
 //USER PERSISTENCE
   useEffect(() => {
     let possibleUser = localStorage.getItem('authUser');
@@ -52,6 +57,7 @@ export default function LoginPage() {
     if(typeof possibleUser != undefined && typeof possibleUser != null) {
       //TODO: ERROR HANDLE
       getToken(localStorage.getItem('authUser'));
+      
       auth.signInWithCustomToken(localStorage.getItem('authToken'))
       .then((res) => {
         console.log(res);
